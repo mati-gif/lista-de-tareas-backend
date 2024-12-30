@@ -24,7 +24,8 @@ exports.register = async (req, res) => {
     await user.save();
     return res.status(201).json({ message: 'Usuario registrado exitosamente.' });
   } catch (error) {
-    return res.status(500).json({ message: 'Error al registrar el usuario.', error });
+    console.error("Error en login: ", error);
+    return res.status(500).json({ message: 'Error al iniciar sesión.', error: error.message });
   }
 };
 
@@ -52,6 +53,7 @@ exports.login = async (req, res) => {
 
     return res.status(200).json({ token });
   } catch (error) {
-    return res.status(500).json({ message: 'Error al iniciar sesión.', error });
+    console.error("Error en login: ", error);
+    return res.status(500).json({ message: 'Error al iniciar sesión.', error: error.message });
   }
 };
