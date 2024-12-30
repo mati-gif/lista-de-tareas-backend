@@ -33,7 +33,10 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
+
   try {
+  console.log('Datos de login:', { email, password });
+
     // Validar si el usuario existe
     const user = await User.findOne({ email });
     if (!user) {
